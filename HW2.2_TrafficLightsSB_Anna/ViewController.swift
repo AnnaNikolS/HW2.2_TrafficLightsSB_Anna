@@ -42,18 +42,14 @@ class ViewController: UIViewController {
         
         if allPressedOnInformationButton == 1 {
             redLight.alpha = 1
+            greenLight.alpha = 0.3
         } else if allPressedOnInformationButton == 2 {
             redLight.alpha = 0.3
             yellowLight.alpha = 1
-        } else if allPressedOnInformationButton % 3 == 0 {
+        } else if allPressedOnInformationButton == 3 {
             yellowLight.alpha = 0.3
             greenLight.alpha = 1
-        } else if allPressedOnInformationButton % 3 == 1 {
-            redLight.alpha = 1
-            greenLight.alpha = 0.3
-        } else if allPressedOnInformationButton % 3 == 2 {
-            yellowLight.alpha = 1
-            redLight.alpha = 0.3
+            allPressedOnInformationButton = 0
         }
     }
 }
