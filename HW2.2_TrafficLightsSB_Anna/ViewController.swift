@@ -8,12 +8,52 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var redLight: UIView!
+    @IBOutlet weak var yellowLight: UIView!
+    @IBOutlet weak var greenLight: UIView!
+    @IBOutlet weak var informationButton: UIButton!
+    
+    var allPressedOnInformationButton = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        informationButton.setTitle("START", for: .normal)
+        
+        redLight.layer.cornerRadius = redLight.frame.height / 2
+        yellowLight.layer.cornerRadius = yellowLight.frame.height / 2
+        greenLight.layer.cornerRadius = greenLight.frame.height / 2
+        informationButton.layer.cornerRadius = informationButton.frame.height / 4
+        
+        redLight.alpha = 0.3
+        yellowLight.alpha = 0.3
+        greenLight.alpha = 0.3
+        
     }
+    
+    @IBAction func pressedInformationButton(_ sender: UIButton) {
+        
+        allPressedOnInformationButton += 1
 
-
+        if informationButton.currentTitle == "START" {
+            informationButton.setTitle("NEXT", for: .normal)
+        }
+        
+        if allPressedOnInformationButton == 1 {
+            redLight.alpha = 1
+        } else if allPressedOnInformationButton == 2 {
+            redLight.alpha = 0.3
+            yellowLight.alpha = 1
+        } else if allPressedOnInformationButton % 3 == 0 {
+            yellowLight.alpha = 0.3
+            greenLight.alpha = 1
+        } else if allPressedOnInformationButton % 3 == 1 {
+            redLight.alpha = 1
+            greenLight.alpha = 0.3
+        } else if allPressedOnInformationButton % 3 == 2 {
+            yellowLight.alpha = 1
+            redLight.alpha = 0.3
+        }
+    }
 }
-
